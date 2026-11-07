@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "enterprise-geo-aeo-standard"
-version = "0.1.0"
+version = "0.2.0"
 authors = [
   { name="James Stone", email="audit@jamesstone.dev" },
 ]
-description = "Canonical CLI validator for enterprise Generative Engine Optimization (GEO) and /llms.txt machine endpoints."
+description = "Open-Source GEO & AEO Diagnostic Validator — A lightweight Python CLI utility for inspecting AI crawler HTTP accessibility, /llms.txt documentation manifests, and Schema.org JSON-LD @graph entity structures."
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [

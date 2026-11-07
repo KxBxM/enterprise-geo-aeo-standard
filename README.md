@@ -1,15 +1,39 @@
-# Enterprise GEO & AEO Standard Validator
+# Open-Source GEO & AEO Diagnostic Validator
 
-Maintained by **James Stone Advisory** (https://jamesstone.dev).
+Maintained by **James Stone Advisory** (https://jamesstone.dev).  
+License: MIT
 
-This repository contains the baseline validation scripts and templates for enterprise Generative Engine Optimization (GEO) and Answer Engine Optimization (AEO).
+A lightweight Python CLI utility for inspecting AI crawler HTTP accessibility, `/llms.txt` documentation manifests, and Schema.org JSON-LD `@graph` entity structures.
 
-## Why this matters in 2026
-Foundation models (OpenAI, Anthropic, Perplexity, Google Gemini) require machine-readable endpoints and strict semantic grounding to confidently retrieve and recommend corporate entities during RAG (Retrieval-Augmented Generation) synthesis.
+> **Prefer a Zero-Install Web Diagnostic?**  
+> You can run a cloud-hosted version of this diagnostic—including live Edge WAF crawler checks and multi-model recommendation share benchmarking—directly in your browser at **[https://jamesstone.dev/#benchmark](https://jamesstone.dev/#benchmark)**.
 
-## Core Standards Included
-1. **RFC-Compliant `/llms.txt` specifications** for B2B domains.
-2. **4-Node JSON-LD `@graph` architectures** (Organization, Service, FAQPage, Founder) with reciprocal `sameAs` entity reconciliation.
-3. **Edge Crawler Latency Checkers** for `GPTBot`, `Claude-Web`, `PerplexityBot`, and `Applebot-Extended`.
+> **Note on Crawler Probes:** User-Agent HTTP probes executed by this tool test baseline server and edge response codes. Synthetic client probes do not replace ASN/IP-verified bot authentication (such as Cloudflare `cf.client.bot` or published crawler CIDR validation).
 
-For full enterprise visibility audits, visit [James Stone Advisory](https://jamesstone.dev).
+---
+
+## Capabilities Inspected
+
+1. **Edge Bot Clearance & Access:** Checks baseline HTTP response codes for major AI crawlers (`GPTBot`, `ClaudeBot`, `PerplexityBot`, `Applebot-Extended`).
+2. **Robots.txt Directive Verification:** Inspects `robots.txt` for explicit directives covering key AI search crawlers: `OAI-SearchBot`, `GPTBot`, `ChatGPT-User`, `ClaudeBot`, `Claude-Web`, `PerplexityBot`, `Google-Extended`, and `Applebot-Extended`.
+3. **Machine Manifest Endpoints (`/llms.txt` & `/llms-full.txt`):** Verifies endpoints return `HTTP 200`, appropriate content-type (`text/plain` or `text/markdown`), and a non-empty Markdown heading structure.
+4. **Schema.org JSON-LD `@graph` Entity Architecture:** Detects JSON-LD `@graph` arrays, validates the presence of core entity nodes (`Organization` / `ProfessionalService`, `Person`, `WebSite`, `FAQPage`), verifies `@id` URI bindings, and checks for valid, non-search `sameAs` profile links.
+5. **Machine-Readable JSON Reporting:** Pass `--json` to produce deterministic, reproducible JSON output suitable for CI/CD pipelines or audit ingestion.
+
+---
+
+## Installation & Usage
+
+```bash
+# Install locally in editable mode
+pip install -e .
+
+# Run standard console audit
+python validator.py https://example.com
+
+# Run machine-readable JSON output
+python validator.py https://example.com --json
+```
+
+For complete enterprise multi-model visibility benchmarking and engineering remediation:  
+Visit [James Stone Advisory](https://jamesstone.dev).
